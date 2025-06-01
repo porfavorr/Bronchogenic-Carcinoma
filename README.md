@@ -1,4 +1,4 @@
-# B.Tech Major Project: Brinchogenic Carcinoma Detection
+# B.Tech Major Project: Bronchogenic Carcinoma Detection
 
 This project aims to develop a system for classifying different types of cancer, specifically lung and colon cancer, from medical image scans using Deep Learning techniques. It provides functionalities for training custom Convolutional Neural Network (CNN) models, evaluating their performance, and making predictions on new images through a user-friendly web interface.
 
