@@ -1,0 +1,392 @@
+2025-05-22 18:39:53,913 - __main__ - [INFO] - Starting Model Training CLI...
+2025-05-22 18:39:53,914 - __main__ - [INFO] - Command Line Arguments Received: Namespace(model_type='colon', epochs=50, batch_size=32, use_transfer_learning=False)
+2025-05-22 18:39:53,914 - __main__ - [INFO] - --- Training Configuration for COLON Model ---
+2025-05-22 18:39:53,914 - __main__ - [INFO] -   Dataset Directory: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\colon_image_sets
+2025-05-22 18:39:53,915 - __main__ - [INFO] -   Number of Classes: 2
+2025-05-22 18:39:53,915 - __main__ - [INFO] -   Class Names: ['colon_aca', 'colon_n']
+2025-05-22 18:39:53,918 - __main__ - [INFO] -   Model Save Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-22 18:39:53,919 - __main__ - [INFO] -   Training History Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_model_history.pkl
+2025-05-22 18:39:53,919 - __main__ - [INFO] -   Label Encoder Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-22 18:39:53,919 - __main__ - [INFO] -   Reports Directory: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\colon
+2025-05-22 18:39:53,920 - __main__ - [INFO] -   Epochs: 50
+2025-05-22 18:39:53,920 - __main__ - [INFO] -   Batch Size: 32
+2025-05-22 18:39:53,921 - __main__ - [INFO] -   Use Transfer Learning: False
+2025-05-22 18:39:53,921 - __main__ - [INFO] - ----------------------------------------------------
+2025-05-22 18:39:53,923 - __main__ - [INFO] - Calling the training pipeline for COLON model...
+2025-05-22 18:39:53,923 - training_pipeline - [INFO] - ===== Starting Training Pipeline for COLON Cancer Model =====
+2025-05-22 18:39:53,924 - training_pipeline - [INFO] - Step 1: Loading dataset from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\colon_image_sets
+2025-05-22 18:39:53,925 - data_preprocessing - [INFO] - Scanning for images in C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\colon_image_sets using class names: ['colon_aca', 'colon_n']
+2025-05-22 18:39:54,033 - data_preprocessing - [INFO] - Found 5000 images for class 'colon_aca'.
+2025-05-22 18:39:54,124 - data_preprocessing - [INFO] - Found 5000 images for class 'colon_n'.
+2025-05-22 18:39:54,127 - data_preprocessing - [INFO] - Successfully loaded 10000 image paths and labels from 2 directories.
+2025-05-22 18:39:54,130 - training_pipeline - [INFO] - Loaded 10000 image records for colon.
+2025-05-22 18:39:54,130 - training_pipeline - [INFO] - Step 2: Encoding labels and saving LabelEncoder to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl...
+2025-05-22 18:39:54,135 - utils - [INFO] - Object successfully saved to pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-22 18:39:54,135 - data_preprocessing - [INFO] - LabelEncoder fitted and saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl. Classes: ['colon_aca', 'colon_n']
+2025-05-22 18:39:54,136 - training_pipeline - [INFO] - Labels encoded. Actual classes found and encoded: ['colon_aca', 'colon_n']
+2025-05-22 18:39:54,136 - training_pipeline - [INFO] - Step 3: Creating data generators (train/validation/test)...
+2025-05-22 18:39:54,164 - data_preprocessing - [INFO] - Dataset split complete: Train (6999), Validation (2001), Test (1000) samples.
+2025-05-22 18:39:55,200 - data_preprocessing - [INFO] - Preparing X_test and y_test arrays from test_df (can be memory intensive)...
+2025-05-22 18:40:28,177 - data_preprocessing - [INFO] - Created X_test array with shape (1000, 128, 128, 3) and y_test_cat array with shape (1000, 2)
+2025-05-22 18:40:28,178 - data_preprocessing - [INFO] - Data generators created. Train batches: 219. Validation batches: 63. Test batches: 32.
+2025-05-22 18:40:28,200 - training_pipeline - [INFO] - Step 4: Building model architecture for colon with 2 classes and input shape (128, 128, 3).
+2025-05-22 18:40:28,201 - model_architecture - [INFO] - Building Colon Cancer CNN Model (version 1) with 2 classes.
+2025-05-22 18:40:28,870 - model_architecture - [INFO] - Custom CNN model 'ColonCancerCNN_CustomV1' created successfully.
+2025-05-22 18:40:28,870 - model_architecture - [INFO] - Input shape: (128, 128, 3), Output classes: 2
+2025-05-22 18:40:28,871 - model_architecture - [INFO] - Output layer activation: 'softmax', Loss function: 'categorical_crossentropy'
+2025-05-22 18:40:28,946 - utils - [ERROR] - Error saving model summary: 'charmap' codec can't encode characters in position 34-121: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\utils.py", line 129, in save_model_summary_and_plot
+    model.summary(print_fn=lambda x: f.write(x + '\n'))
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\utils\traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\utils.py", line 129, in <lambda>
+    model.summary(print_fn=lambda x: f.write(x + '\n'))
+                                     ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 34-121: character maps to <undefined>
+2025-05-22 18:40:28,948 - training_pipeline - [INFO] - Initial model summary for 'ColonCancerCNN_CustomV1' saved.
+2025-05-22 18:40:28,948 - training_pipeline - [INFO] - Step 5: Defining Keras callbacks...
+2025-05-22 18:40:28,949 - training_pipeline - [INFO] - Callbacks configured: ModelCheckpoint (to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras), EarlyStopping, ReduceLROnPlateau, TensorBoard (to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\logs\fit\colon\20250522-184028).
+2025-05-22 18:40:28,949 - training_pipeline - [INFO] - Step 6: Starting model training for colon...
+2025-05-22 18:40:28,949 - training_pipeline - [INFO] - Epochs: 50, Batch Size: 32
+2025-05-22 18:40:28,950 - training_pipeline - [INFO] - Training samples: 6999, Validation samples: 2001
+2025-05-22 18:40:28,950 - training_pipeline - [INFO] - Steps per epoch: 219, Validation steps: 63
+2025-05-22 22:50:28,787 - training_pipeline - [INFO] - Training completed for colon.
+2025-05-22 22:50:28,792 - training_pipeline - [INFO] - Step 7: Saving training history to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_model_history.pkl...
+2025-05-22 22:50:28,797 - utils - [INFO] - Object successfully saved to pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_model_history.pkl
+2025-05-22 22:50:28,799 - training_pipeline - [INFO] - Step 8: Evaluating the best model on the test set for colon...
+2025-05-22 22:50:29,964 - training_pipeline - [INFO] - Successfully loaded best model from C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras for final evaluation.
+2025-05-22 22:50:29,966 - evaluation - [INFO] - --- Initiating Full Model Performance Evaluation for COLON ---
+2025-05-22 22:50:29,966 - evaluation - [INFO] - Plotting training history...
+2025-05-22 22:50:31,693 - utils - [INFO] - Accuracy plot saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\colon\colon_training_accuracy_plot.png
+2025-05-22 22:50:31,835 - utils - [INFO] - Loss plot saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\colon\colon_training_loss_plot.png
+2025-05-22 22:50:31,836 - evaluation - [INFO] - Generating classification report and confusion matrix...
+2025-05-22 22:50:31,837 - evaluation - [INFO] - Predicting using test generator (1000 samples) for colon evaluation...
+2025-05-23 13:17:09,960 - __main__ - [INFO] - Starting Model Training CLI...
+2025-05-23 13:17:09,960 - __main__ - [INFO] - Command Line Arguments Received: Namespace(model_type='lung', epochs=75, batch_size=32, use_transfer_learning=False)
+2025-05-23 13:17:09,961 - __main__ - [INFO] - --- Training Configuration for LUNG Model ---
+2025-05-23 13:17:09,961 - __main__ - [INFO] -   Dataset Directory: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\lung_image_sets
+2025-05-23 13:17:09,961 - __main__ - [INFO] -   Number of Classes: 3
+2025-05-23 13:17:09,961 - __main__ - [INFO] -   Class Names: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 13:17:09,961 - __main__ - [INFO] -   Model Save Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 13:17:09,962 - __main__ - [INFO] -   Training History Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_model_history.pkl
+2025-05-23 13:17:09,962 - __main__ - [INFO] -   Label Encoder Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 13:17:09,962 - __main__ - [INFO] -   Reports Directory: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung
+2025-05-23 13:17:09,962 - __main__ - [INFO] -   Epochs: 75
+2025-05-23 13:17:09,963 - __main__ - [INFO] -   Batch Size: 32
+2025-05-23 13:17:09,963 - __main__ - [INFO] -   Use Transfer Learning: False
+2025-05-23 13:17:09,963 - __main__ - [INFO] - ----------------------------------------------------
+2025-05-23 13:17:09,964 - __main__ - [INFO] - Calling the training pipeline for LUNG model...
+2025-05-23 13:17:09,964 - training_pipeline - [INFO] - ===== Starting Training Pipeline for LUNG Cancer Model =====
+2025-05-23 13:17:09,964 - training_pipeline - [INFO] - Step 1: Loading dataset from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\lung_image_sets
+2025-05-23 13:17:09,965 - data_preprocessing - [INFO] - Scanning for images in C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\lung_image_sets using class names: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 13:17:09,985 - data_preprocessing - [INFO] - Found 5000 images for class 'lung_aca'.
+2025-05-23 13:17:09,998 - data_preprocessing - [INFO] - Found 5000 images for class 'lung_n'.
+2025-05-23 13:17:10,018 - data_preprocessing - [INFO] - Found 5000 images for class 'lung_scc'.
+2025-05-23 13:17:10,021 - data_preprocessing - [INFO] - Successfully loaded 15000 image paths and labels from 3 directories.
+2025-05-23 13:17:10,025 - training_pipeline - [INFO] - Loaded 15000 image records for lung.
+2025-05-23 13:17:10,026 - training_pipeline - [INFO] - Step 2: Encoding labels and saving LabelEncoder to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl...
+2025-05-23 13:17:10,029 - utils - [INFO] - Object successfully saved to pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 13:17:10,029 - data_preprocessing - [INFO] - LabelEncoder fitted and saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl. Classes: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 13:17:10,029 - training_pipeline - [INFO] - Labels encoded. Actual classes found and encoded: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 13:17:10,030 - training_pipeline - [INFO] - Step 3: Creating data generators (train/validation/test)...
+2025-05-23 13:17:10,049 - data_preprocessing - [INFO] - Dataset split complete: Train (10500), Validation (3000), Test (1500) samples.
+2025-05-23 13:17:11,303 - data_preprocessing - [INFO] - Preparing X_test and y_test arrays from test_df (can be memory intensive)...
+2025-05-23 13:17:41,684 - data_preprocessing - [INFO] - Created X_test array with shape (1500, 128, 128, 3) and y_test_cat array with shape (1500, 3)
+2025-05-23 13:17:41,686 - data_preprocessing - [INFO] - Data generators created. Train batches: 329. Validation batches: 94. Test batches: 47.
+2025-05-23 13:17:41,704 - training_pipeline - [INFO] - Step 4: Building model architecture for lung with 3 classes and input shape (128, 128, 3).
+2025-05-23 13:17:41,704 - model_architecture - [INFO] - Building Lung Cancer CNN Model (version 1) with 3 classes.
+2025-05-23 13:17:42,356 - model_architecture - [INFO] - Custom CNN model 'LungCancerCNN_CustomV1' created successfully.
+2025-05-23 13:17:42,357 - model_architecture - [INFO] - Input shape: (128, 128, 3), Output classes: 3
+2025-05-23 13:17:42,357 - model_architecture - [INFO] - Output layer activation: 'softmax', Loss function: 'categorical_crossentropy'
+2025-05-23 13:17:42,411 - utils - [ERROR] - Error saving model summary: 'charmap' codec can't encode characters in position 33-120: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\utils.py", line 129, in save_model_summary_and_plot
+    model.summary(print_fn=lambda x: f.write(x + '\n'))
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\utils\traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\utils.py", line 129, in <lambda>
+    model.summary(print_fn=lambda x: f.write(x + '\n'))
+                                     ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 33-120: character maps to <undefined>
+2025-05-23 13:17:42,452 - training_pipeline - [INFO] - Initial model summary for 'LungCancerCNN_CustomV1' saved.
+2025-05-23 13:17:42,453 - training_pipeline - [INFO] - Step 5: Defining Keras callbacks...
+2025-05-23 13:17:42,453 - training_pipeline - [INFO] - Callbacks configured: ModelCheckpoint (to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras), EarlyStopping, ReduceLROnPlateau, TensorBoard (to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\logs\fit\lung\20250523-131742).
+2025-05-23 13:17:42,453 - training_pipeline - [INFO] - Step 6: Starting model training for lung...
+2025-05-23 13:17:42,453 - training_pipeline - [INFO] - Epochs: 75, Batch Size: 32
+2025-05-23 13:17:42,453 - training_pipeline - [INFO] - Training samples: 10500, Validation samples: 3000
+2025-05-23 13:17:42,454 - training_pipeline - [INFO] - Steps per epoch: 329, Validation steps: 94
+2025-05-23 14:49:51,768 - training_pipeline - [INFO] - Training completed for lung.
+2025-05-23 14:49:51,769 - training_pipeline - [INFO] - Step 7: Saving training history to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_model_history.pkl...
+2025-05-23 14:49:51,772 - utils - [INFO] - Object successfully saved to pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_model_history.pkl
+2025-05-23 14:49:51,773 - training_pipeline - [INFO] - Step 8: Evaluating the best model on the test set for lung...
+2025-05-23 14:49:52,648 - training_pipeline - [INFO] - Successfully loaded best model from C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras for final evaluation.
+2025-05-23 14:49:52,649 - evaluation - [INFO] - --- Initiating Full Model Performance Evaluation for LUNG ---
+2025-05-23 14:49:52,649 - evaluation - [INFO] - Plotting training history...
+2025-05-23 14:49:53,728 - utils - [INFO] - Accuracy plot saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_training_accuracy_plot.png
+2025-05-23 14:49:53,863 - utils - [INFO] - Loss plot saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_training_loss_plot.png
+2025-05-23 14:49:53,863 - evaluation - [INFO] - Generating classification report and confusion matrix...
+2025-05-23 14:49:53,864 - evaluation - [INFO] - Predicting using test generator (1500 samples) for lung evaluation...
+2025-05-23 14:50:06,605 - evaluation - [INFO] - Generating classification report for lung...
+2025-05-23 14:50:06,619 - evaluation - [INFO] - 
+Classification Report (lung):
+              precision    recall  f1-score   support
+
+    lung_aca     1.0000    0.0080    0.0159       500
+      lung_n     1.0000    0.2220    0.3633       500
+    lung_scc     0.3610    1.0000    0.5305       500
+
+    accuracy                         0.4100      1500
+   macro avg     0.7870    0.4100    0.3032      1500
+weighted avg     0.7870    0.4100    0.3032      1500
+
+2025-05-23 14:50:06,620 - evaluation - [INFO] - Classification report saved to: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_classification_report.txt
+2025-05-23 14:50:06,621 - evaluation - [INFO] - Generating confusion matrix for lung...
+2025-05-23 14:50:06,886 - utils - [INFO] - Confusion matrix heatmap saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_confusion_matrix.png
+2025-05-23 14:50:06,886 - evaluation - [INFO] - --- Full Model Performance Evaluation for LUNG Finished ---
+2025-05-23 14:50:06,886 - training_pipeline - [INFO] - ===== LUNG Cancer Model Training Pipeline Finished =====
+2025-05-23 14:50:06,888 - training_pipeline - [INFO] - Total pipeline execution time: 92.95 minutes.
+2025-05-23 14:50:06,900 - __main__ - [INFO] - Training pipeline for LUNG model completed SUCCESSFULLY.
+2025-05-23 14:50:06,901 - __main__ - [INFO] -   Final model saved at: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 14:50:06,901 - __main__ - [INFO] -   Review training reports and plots in: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung
+2025-05-23 14:50:06,902 - __main__ - [INFO] -   TensorBoard logs (if generated) are in the 'logs/fit/lung/' directory.
+2025-05-23 14:50:06,902 - __main__ - [INFO] - Model Training CLI finished.
+2025-05-23 15:44:16,382 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 15:44:16,382 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 15:44:17,280 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 15:44:17,309 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 15:44:17,310 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 15:44:17,310 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 15:44:17,313 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 15:44:17,314 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 15:44:17,845 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 15:44:17,855 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 15:44:17,856 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 15:44:17,856 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 15:46:12,296 - prediction_pipeline - [INFO] - Prediction for 'colon': Class='colon_aca', Confidence=100.00%
+2025-05-23 15:46:32,874 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=100.00%
+2025-05-23 15:47:20,290 - prediction_pipeline - [INFO] - Prediction for 'colon': Class='colon_aca', Confidence=100.00%
+2025-05-23 15:47:33,906 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=93.38%
+2025-05-23 15:47:47,111 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=100.00%
+2025-05-23 15:47:56,195 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=100.00%
+2025-05-23 15:48:14,536 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=99.99%
+2025-05-23 15:48:32,243 - prediction_pipeline - [INFO] - Prediction for 'colon': Class='colon_n', Confidence=99.96%
+2025-05-23 15:48:41,745 - prediction_pipeline - [INFO] - Prediction for 'colon': Class='colon_aca', Confidence=100.00%
+2025-05-23 15:49:03,334 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=100.00%
+2025-05-23 17:23:21,325 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=100.00%
+2025-05-23 17:23:40,687 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=96.47%
+2025-05-23 17:28:12,956 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 17:28:12,957 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 17:28:13,860 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 17:28:13,861 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:28:13,861 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:28:13,862 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 17:28:13,864 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 17:28:13,865 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 17:28:14,606 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 17:28:14,607 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:28:14,608 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:28:14,608 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 17:28:46,993 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 17:28:46,994 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 17:28:47,965 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 17:28:47,982 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:28:47,982 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:28:47,982 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 17:28:47,985 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 17:28:47,985 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 17:28:48,609 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 17:28:48,610 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:28:48,610 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:28:48,610 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 17:30:10,797 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 17:30:10,797 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 17:30:11,551 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 17:30:11,552 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:30:11,552 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:30:11,552 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 17:30:11,556 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 17:30:11,557 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 17:30:12,298 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 17:30:12,299 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:30:12,300 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:30:12,300 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 17:30:56,645 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 17:30:56,645 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 17:30:57,256 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 17:30:57,256 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:30:57,257 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:30:57,257 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 17:30:57,258 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 17:30:57,259 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 17:30:57,782 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 17:30:57,783 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:30:57,783 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:30:57,783 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 17:35:25,357 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 17:35:25,358 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 17:35:26,123 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 17:35:26,123 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:35:26,123 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 17:35:26,123 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 17:35:26,125 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 17:35:26,125 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 17:35:26,790 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 17:35:26,790 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:35:26,791 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:35:26,791 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 17:43:11,258 - __main__ - [INFO] - Starting Model Training CLI...
+2025-05-23 17:43:11,258 - __main__ - [INFO] - Command Line Arguments Received: Namespace(model_type='lung', epochs=75, batch_size=32, use_transfer_learning=True)
+2025-05-23 17:43:11,258 - __main__ - [INFO] - --- Training Configuration for LUNG Model ---
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Dataset Directory: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\lung_image_sets
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Number of Classes: 3
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Class Names: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Model Save Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Training History Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_model_history.pkl
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Label Encoder Path: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Reports Directory: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Epochs: 75
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Batch Size: 32
+2025-05-23 17:43:11,259 - __main__ - [INFO] -   Use Transfer Learning: True
+2025-05-23 17:43:11,260 - __main__ - [INFO] - ----------------------------------------------------
+2025-05-23 17:43:11,260 - __main__ - [INFO] - Calling the training pipeline for LUNG model...
+2025-05-23 17:43:11,260 - training_pipeline - [INFO] - ===== Starting Training Pipeline for LUNG Cancer Model =====
+2025-05-23 17:43:11,260 - training_pipeline - [INFO] - Step 1: Loading dataset from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\lung_image_sets
+2025-05-23 17:43:11,260 - data_preprocessing - [INFO] - Scanning for images in C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\data\lung_colon_image_set\lung_image_sets using class names: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 17:43:11,277 - data_preprocessing - [INFO] - Found 5000 images for class 'lung_aca'.
+2025-05-23 17:43:11,292 - data_preprocessing - [INFO] - Found 5000 images for class 'lung_n'.
+2025-05-23 17:43:11,307 - data_preprocessing - [INFO] - Found 5000 images for class 'lung_scc'.
+2025-05-23 17:43:11,309 - data_preprocessing - [INFO] - Successfully loaded 15000 image paths and labels from 3 directories.
+2025-05-23 17:43:11,312 - training_pipeline - [INFO] - Loaded 15000 image records for lung.
+2025-05-23 17:43:11,313 - training_pipeline - [INFO] - Step 2: Encoding labels and saving LabelEncoder to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl...
+2025-05-23 17:43:11,315 - utils - [INFO] - Object successfully saved to pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 17:43:11,316 - data_preprocessing - [INFO] - LabelEncoder fitted and saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl. Classes: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 17:43:11,316 - training_pipeline - [INFO] - Labels encoded. Actual classes found and encoded: ['lung_aca', 'lung_n', 'lung_scc']
+2025-05-23 17:43:11,316 - training_pipeline - [INFO] - Step 3: Creating data generators (train/validation/test)...
+2025-05-23 17:43:11,332 - data_preprocessing - [INFO] - Dataset split complete: Train (10500), Validation (3000), Test (1500) samples.
+2025-05-23 17:43:11,777 - data_preprocessing - [INFO] - Preparing X_test and y_test arrays from test_df (can be memory intensive)...
+2025-05-23 17:43:19,935 - data_preprocessing - [INFO] - Created X_test array with shape (1500, 128, 128, 3) and y_test_cat array with shape (1500, 3)
+2025-05-23 17:43:19,935 - data_preprocessing - [INFO] - Data generators created. Train batches: 329. Validation batches: 94. Test batches: 47.
+2025-05-23 17:43:19,947 - training_pipeline - [INFO] - Step 4: Building model architecture for lung with 3 classes and input shape (128, 128, 3).
+2025-05-23 17:43:19,948 - training_pipeline - [INFO] - Attempting to use Transfer Learning model (VGG16)...
+2025-05-23 17:43:19,948 - training_pipeline - [WARNING] - Transfer learning (VGG16) is currently commented out in model_architecture.py. Using custom CNN.
+2025-05-23 17:43:19,948 - model_architecture - [INFO] - Building Lung Cancer CNN Model (version 1) with 3 classes.
+2025-05-23 17:43:20,306 - model_architecture - [INFO] - Custom CNN model 'LungCancerCNN_CustomV1' created successfully.
+2025-05-23 17:43:20,307 - model_architecture - [INFO] - Input shape: (128, 128, 3), Output classes: 3
+2025-05-23 17:43:20,307 - model_architecture - [INFO] - Output layer activation: 'softmax', Loss function: 'categorical_crossentropy'
+2025-05-23 17:43:20,330 - utils - [ERROR] - Error saving model summary: 'charmap' codec can't encode characters in position 33-120: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\utils.py", line 129, in save_model_summary_and_plot
+    model.summary(print_fn=lambda x: f.write(x + '\n'))
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\utils\traceback_utils.py", line 122, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\utils.py", line 129, in <lambda>
+    model.summary(print_fn=lambda x: f.write(x + '\n'))
+                                     ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 33-120: character maps to <undefined>
+2025-05-23 17:43:20,331 - training_pipeline - [INFO] - Initial model summary for 'LungCancerCNN_CustomV1' saved.
+2025-05-23 17:43:20,331 - training_pipeline - [INFO] - Step 5: Defining Keras callbacks...
+2025-05-23 17:43:20,332 - training_pipeline - [INFO] - Callbacks configured: ModelCheckpoint (to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras), EarlyStopping, ReduceLROnPlateau, TensorBoard (to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\logs\fit\lung\20250523-174320).
+2025-05-23 17:43:20,332 - training_pipeline - [INFO] - Step 6: Starting model training for lung...
+2025-05-23 17:43:20,332 - training_pipeline - [INFO] - Epochs: 75, Batch Size: 32
+2025-05-23 17:43:20,332 - training_pipeline - [INFO] - Training samples: 10500, Validation samples: 3000
+2025-05-23 17:43:20,332 - training_pipeline - [INFO] - Steps per epoch: 329, Validation steps: 94
+2025-05-23 18:50:57,465 - prediction_pipeline - [INFO] - Predictor for 'colon' not found in cache. Attempting to create and cache now...
+2025-05-23 18:50:57,472 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'colon' model...
+2025-05-23 18:51:01,912 - prediction_pipeline - [INFO] - Keras model for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_cancer_model.keras
+2025-05-23 18:51:01,984 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 18:51:01,987 - prediction_pipeline - [INFO] - LabelEncoder for 'colon' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\colon_label_encoder.pkl
+2025-05-23 18:51:01,987 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'colon'.
+2025-05-23 18:51:01,997 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 18:51:02,000 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 18:51:03,142 - prediction_pipeline - [ERROR] - Error loading Keras model for 'lung' from C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras: pop from empty list
+Traceback (most recent call last):
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\src\prediction_pipeline.py", line 60, in _load_model_and_encoder
+    self.model = load_model(model_file_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\saving\saving_api.py", line 189, in load_model
+    return saving_lib.load_model(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\saving\saving_lib.py", line 370, in load_model
+    return _load_model_from_fileobj(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\saving\saving_lib.py", line 447, in _load_model_from_fileobj
+    model = _model_from_config(
+            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\saving\saving_lib.py", line 436, in _model_from_config
+    model = deserialize_keras_object(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\saving\serialization_lib.py", line 718, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\models\sequential.py", line 371, in from_config
+    layer = serialization_lib.deserialize_keras_object(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\saving\serialization_lib.py", line 730, in deserialize_keras_object
+    instance.build_from_config(build_config)
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\layers\layer.py", line 481, in build_from_config
+    self.build(config["input_shape"])
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\layers\layer.py", line 230, in build_wrapper
+    with obj._open_name_scope():
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\backend\tensorflow\core.py", line 692, in __exit__
+    super().__exit__(*args, **kwargs)
+  File "C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\venv\Lib\site-packages\keras\src\backend\common\name_scope.py", line 61, in __exit__
+    name_scope_stack.pop()
+IndexError: pop from empty list
+2025-05-23 18:51:03,932 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 18:51:03,996 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 18:51:04,016 - prediction_pipeline - [WARNING] - Predictor for 'lung' is NOT ready: Model not loaded.
+2025-05-23 18:51:04,039 - prediction_pipeline - [ERROR] - Failed to properly initialize and make predictor ready for 'lung'. Removing from cache.
+2025-05-23 18:51:07,279 - prediction_pipeline - [INFO] - Predictor for 'lung' not found in cache. Attempting to create and cache now...
+2025-05-23 18:51:07,284 - prediction_pipeline - [INFO] - Initializing ImagePredictor for 'lung' model...
+2025-05-23 18:51:11,531 - prediction_pipeline - [INFO] - Keras model for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 18:51:11,533 - utils - [INFO] - Object successfully loaded from pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 18:51:11,534 - prediction_pipeline - [INFO] - LabelEncoder for 'lung' loaded successfully from: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_label_encoder.pkl
+2025-05-23 18:51:11,535 - prediction_pipeline - [INFO] - Successfully created and cached predictor for 'lung'.
+2025-05-23 18:51:30,342 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=99.93%
+2025-05-23 20:25:24,442 - training_pipeline - [INFO] - Training completed for lung.
+2025-05-23 20:25:24,444 - training_pipeline - [INFO] - Step 7: Saving training history to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_model_history.pkl...
+2025-05-23 20:25:24,447 - utils - [INFO] - Object successfully saved to pickle file: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_model_history.pkl
+2025-05-23 20:25:24,448 - training_pipeline - [INFO] - Step 8: Evaluating the best model on the test set for lung...
+2025-05-23 20:25:25,641 - training_pipeline - [INFO] - Successfully loaded best model from C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras for final evaluation.
+2025-05-23 20:25:25,642 - evaluation - [INFO] - --- Initiating Full Model Performance Evaluation for LUNG ---
+2025-05-23 20:25:25,642 - evaluation - [INFO] - Plotting training history...
+2025-05-23 20:25:27,233 - utils - [INFO] - Accuracy plot saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_training_accuracy_plot.png
+2025-05-23 20:25:27,470 - utils - [INFO] - Loss plot saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_training_loss_plot.png
+2025-05-23 20:25:27,470 - evaluation - [INFO] - Generating classification report and confusion matrix...
+2025-05-23 20:25:27,471 - evaluation - [INFO] - Predicting using test generator (1500 samples) for lung evaluation...
+2025-05-23 20:25:38,391 - evaluation - [INFO] - Generating classification report for lung...
+2025-05-23 20:25:38,408 - evaluation - [INFO] - 
+Classification Report (lung):
+              precision    recall  f1-score   support
+
+    lung_aca     0.8576    0.4940    0.6269       500
+      lung_n     0.0000    0.0000    0.0000       500
+    lung_scc     0.4125    1.0000    0.5841       500
+
+    accuracy                         0.4980      1500
+   macro avg     0.4234    0.4980    0.4037      1500
+weighted avg     0.4234    0.4980    0.4037      1500
+
+2025-05-23 20:25:38,409 - evaluation - [INFO] - Classification report saved to: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_classification_report.txt
+2025-05-23 20:25:38,409 - evaluation - [INFO] - Generating confusion matrix for lung...
+2025-05-23 20:25:38,736 - utils - [INFO] - Confusion matrix heatmap saved to C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung\lung_confusion_matrix.png
+2025-05-23 20:25:38,736 - evaluation - [INFO] - --- Full Model Performance Evaluation for LUNG Finished ---
+2025-05-23 20:25:38,737 - training_pipeline - [INFO] - ===== LUNG Cancer Model Training Pipeline Finished =====
+2025-05-23 20:25:38,737 - training_pipeline - [INFO] - Total pipeline execution time: 162.46 minutes.
+2025-05-23 20:25:38,749 - __main__ - [INFO] - Training pipeline for LUNG model completed SUCCESSFULLY.
+2025-05-23 20:25:38,750 - __main__ - [INFO] -   Final model saved at: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\trained_models\lung_cancer_model.keras
+2025-05-23 20:25:38,750 - __main__ - [INFO] -   Review training reports and plots in: C:\Users\hyank\Documents\BTech_Cancer_Detection_Project\reports\lung
+2025-05-23 20:25:38,750 - __main__ - [INFO] -   TensorBoard logs (if generated) are in the 'logs/fit/lung/' directory.
+2025-05-23 20:25:38,750 - __main__ - [INFO] - Model Training CLI finished.
+2025-05-23 20:27:53,849 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=98.31%
+2025-05-23 20:28:04,970 - prediction_pipeline - [INFO] - Prediction for 'lung': Class='lung_scc', Confidence=78.74%
