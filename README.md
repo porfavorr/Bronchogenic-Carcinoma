@@ -138,4 +138,4 @@ Open your web browser and navigate to the URL provided by Streamlit (usually `ht
 
 ---
 Project developed as part of B.Tech curriculum.
-name/team
+Pulkit Hyanki , Karan Arya
